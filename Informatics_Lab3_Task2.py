@@ -9,16 +9,16 @@ def findVowel(text):
     result = []
     for word in words:
         word_lower = word.lower()
-        vowels = re.findall(r'[аеёиоуыэюя]', word_lower)
-
-        if vowels and len(set(vowels)) == 1:
+        unique_vowels = set(re.findall(r'[аеёиоуыэюя]', word_lower))
+        
+        if len(unique_vowels) == 1:
             result.append(word_lower)
     
     result.sort(key=lambda x: (len(x), x))
-    
     return result
 
 text = "Классное слово – обороноспособность, которое должно идти после слов: трава и молоко."
 result = findVowel(text)
 for word in result:
+
     print(word)
